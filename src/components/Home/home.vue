@@ -1,17 +1,9 @@
 <template>
   <div class="home">
-       <h1 v-text="projectName"></h1>
-       <div class="homeContent">
-           <div class="homeTop">
-
-           </div>
-           <div class="homeMenu">
-             <span v-for="item in rootSave" v-show="!item.parent">
-               <a @click="homeMenuClick(rootSave,item)" v-show="item.node.title != '首页'"><i :class="item.node.iconClass"></i>{{item.node.title}}</a>
-             </span>
-           </div>
-       </div>
-</div>
+    <div v-for="item in rootSave" v-show="!item.parent">
+      <router-link tag="a" :to="{path: item.href}" v-show="item.title != '首页'"><i :class="item.iconClass"></i>{{item.title}}</router-link>
+    </div>
+  </div>
 
 </template>
 
@@ -25,8 +17,6 @@ export default {
     }
   },
   mounted() {
-     this.getProjectNmae();
-
 		},
   methods:{
     homeMenuClick(root,item){
@@ -59,19 +49,6 @@ export default {
     },
     callback: function(){
       console.log("success");
-    },
-    getProjectNmae: function(){
-      var dthis = this;
-      let urlna = "/api/real/equip_tree";
-      this.Axios.post(urlna).then(response => {
-            if(response.data.HttpData.code == 200)
-              dthis.projectName =response.data.HttpData.data.Name;
-            else
-              dthis.getProjectNmae();
-        })
-        .catch(error => {
-          // console.log(error);
-        });
     },
   },
 

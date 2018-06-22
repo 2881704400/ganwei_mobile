@@ -12,8 +12,8 @@
     .header{
         @include flexBox();
         background-color: $headerBgc;
-        height: $headH;
-      
+        height: #{$headerHeight};
+        position: relative;z-index: 99999;box-shadow: 1px 0px 0px #{$asideBgc};
         .header-logo{
             width: $asideW;
             height: 100%;
@@ -77,21 +77,19 @@
     .main{
         @include flexBox;
         position: absolute;
-        top: $headH;
-        bottom: 0;
+        top: 0;
+        bottom:  0;
         left: 0;
         right: 0;
-        flex-wrap: nowrap;
-        overflow: hidden;
+        padding: #{$headerHeight} 0 #{$footerHeight} 0;
         .nav-left{
             flex-shrink: 0;
-            position: relative;
+            position: absolute;top: #{$headerHeight};bottom: #{$footerHeight};left: 0;
             width: $asideW;
-            height: 100%;
+            
             background-color: $asideBgc;
-          
+            z-index: 9999;
             transition: margin 600ms;
-            box-shadow: -1px 0px 2px 0px rgba(0,0,0,0.1) inset;
             &.close{
                 margin-left: -$asideW;
             }
@@ -102,73 +100,13 @@
                 height: 100%;
                 overflow-y: auto;
                 overflow-x: auto;
-                // &::-webkit-scrollbar{
-                //     // display: none;
-                //     width: 8px;
-                //     height: 8px;
-                // }
-                // &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-                //     border-radius: 10px;
-                //     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-                //     background: #535353;
-                // }
-                // &::-webkit-scrollbar-track {/*滚动条里面轨道*/
-                //     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-                //     border-radius: 8px;
-                //     background: #EDEDED;
-                // }
-                .ivu-tree{
-                    padding-bottom: 70px;  
-                    .ivu-tree-children{
-                        overflow: hidden;
-                        padding-left: 0;
-                        li{
-                            transition: all 0.4s;
-                        }
-                        .nav-item{
-                            color: #333;
-                            $activeW: 6px;
-                            $activeH: 6px;
-                            $activeBgc: #333;
-                            color: #000;
-                            &.selected{
-                                background-color: #fff;
-                            }
-                            &:hover{
-                                // box-shadow: 6px 0px 0px #fff inset;
-                                background-color: #fafafa;
-                            }
-                            .alarm-state{
-                                &.offline{
-                                    background-color: #A0A0A0;
-                                }
-                                &.fine{
-                                    background-color: #35b468;
-                                }
-                                &.alarm{
-                                    background-color: #eb303a;
-                                }
-                                &.setting{
-                                    background-color: #FFD600;
-                                }
-                                &.initial{
-                                    background-color: #A0A0A0;
-                                }
-                                &.withdrawing{
-                                    background-color: #FFA500;
-                                }
-                                &.unknown{
-                                    background-color: #D3D3D3;
-                                }
-                            }
-                        }
-                        li{
-                            margin: 0 auto;
-                            .ivu-tree-arrow{
-                                display: none;
-                            }
-                        }
-                    }
+                &>ul{
+                    background: #{$panelBgc};
+                    &>li{height: #{$headerHeight};line-height: #{$headerHeight};position: relative;
+                      &>a{color: #{$btnFontColor};width: 100%;height: 100%;display: inline-block;padding-left: 35px;
+                        &>i{font-size: 1.2rem;color: inherit;margin-right: 15px;}
+                       }
+                     }
                 }
             }
             .fold{
@@ -216,9 +154,7 @@
             width: 100%;
             height: 100%;
             flex-grow: 1;
-            // overflow-y: auto;
             overflow: hidden;
-            padding-top: $titlebarH;
             position: relative;
             &.home{
                 padding-top: 0;
@@ -259,4 +195,5 @@
             }
         }
     }
+    .footer{width: 100%;height: $footerHeight;position: absolute;left: 0;bottom:0;z-index: 99999;}
 }

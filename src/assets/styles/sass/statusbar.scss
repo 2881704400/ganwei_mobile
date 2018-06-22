@@ -1,0 +1,27 @@
+@import './valuables', './mixin';
+.gw-statusbar{
+    width: 100%;
+
+    height: #{$headerHeight};
+
+    line-height: #{$headerHeight};
+
+    background: #{$headerBgc};
+
+    white-space: nowrap;
+
+    &>div{
+        height: 100%;margin: 0;padding: 0;border: 0;text-align: center;display: inline-block;vertical-align: top;
+
+        &>a,&>h3{color: white;width: 100%;height: 100%;display: inline-block;}
+    }
+
+    .leftTitle{width: 20%;}
+
+    .centerTitle{width: 60%;h3{ @include sgTextOE();}}
+
+    .rightTitle{width: 20%;}
+
+     
+
+}

@@ -57,7 +57,7 @@ export default {
             this.loading = false
             this.userName = ''
             this.userPwd = ''
-            this.$router.replace('/index')
+            this.$router.replace('/Index')
             break
           case 1002:
             this.$Message.error(data.message)
