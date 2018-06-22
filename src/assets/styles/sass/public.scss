@@ -23,6 +23,22 @@ html{
             }
         }
     }
+    .borderBottom::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: auto;
+        top: auto;
+        width: 100%;
+        height: 1px;
+        background-color: #666;
+        display: block;
+        z-index: 15;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.1);
+    }    
     .gw{
       height: 100%;
       overflow: hidden;
